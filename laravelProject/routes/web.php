@@ -20,4 +20,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('posts', 'postController@model');
+Route::get('post/create', 'PostController@create');
+
+Route::post('post', 'PostController@store');
