@@ -19,3 +19,5 @@ Route::get('testSak', 'testSakController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('posts', 'postController@model');
