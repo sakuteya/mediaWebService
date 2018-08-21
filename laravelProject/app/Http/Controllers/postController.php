@@ -2,22 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\posts;
+use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreBlogPost;
 
-class postController extends Controller
+class PostController extends Controller
 {
-  public function model()
-  {
-    // postsモデルのインスタンス化
-    $md = new posts();
-    // データ取得
-    $data = $md->getData();
-
-    // ビューを返す
-    return view('posts', ['data' => $data]);
-  }
-
   /**
      * 新ブログポスト作成フォームの表示
      *
@@ -34,12 +24,14 @@ class postController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreBlogPost $request)
     {
-        // ブログポストのバリデーションと保存コード…
-        $validatedData = $request->validate([
-          'title' => 'required|unique:posts|max:255',
-          'body' => 'required',
-        ]);
+        // 送信されたリクエストは正しい
+
+        // バリデーション済みデータの取得
+        $validated = $request->validated();
+
+
+        return view('post');
     }
 }

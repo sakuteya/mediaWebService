@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class posts extends Model
+class Post extends Model
 {
     protected $table = 'articles';
 
@@ -13,6 +13,7 @@ class posts extends Model
     protected $guarded = array('id');
 
     public $timestamps = true;
+    
 
     public function getData()
     {

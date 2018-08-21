@@ -23,17 +23,7 @@
         </div>
     @endif
 
-    <!-- ポスト作成フォーム -->
-    
-    <form action='post' method='store'>
-        {{ csrf_field() }}
-
-        <button type='submit' name='tsts'>
-            とうこうぼたん
-        </button>
-        <input type='text' name='title'>
-        <input type='text' name='body'>
-
-    </form>
+    <!-- ポスト完了！ -->
+    投稿しました！（したとは言っていない
 
 @endsection
