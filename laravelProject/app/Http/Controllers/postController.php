@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreBlogPost;
+use App\Http\Requests\PostRequest;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -24,13 +25,16 @@ class PostController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(StoreBlogPost $request)
+    public function store(PostRequest $request)
     {
-        // 送信されたリクエストは正しい
+        $post = new Post;
+        $user = Auth::user();
 
-        // バリデーション済みデータの取得
-        $validated = $request->validated();
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->user_id = $user->id;
 
+        $post->save();
 
         return view('post');
     }

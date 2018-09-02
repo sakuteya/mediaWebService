@@ -23,6 +23,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('post/create', 'PostController@create');
 
 Route::post('/', 'PostController@store');
-    Route::get('post/post', 'PostController@store');
+Route::get('post/post', 'PostController@store');
 
 Route::get('phpinfo', 'PhpinfoController@index');
