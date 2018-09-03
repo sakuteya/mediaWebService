@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
 
 class PostRequest extends FormRequest
 {
@@ -23,8 +25,15 @@ class PostRequest extends FormRequest
      */
     public function rules()
     {
+        // $user = Auth::user();
         return [
-            'title' => 'required|unique:articles|max:255',
+            'title' => [
+                'required',
+                Rule::unique('articles')->ignore($this->input('id'))->where(function($query) {
+                    $query->where('user_id', $this->user()->id);
+                }),
+                'max:255'
+            ],
             'body' => 'required',
         ];
     }
