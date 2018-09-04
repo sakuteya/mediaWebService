@@ -25,7 +25,6 @@ class PostRequest extends FormRequest
      */
     public function rules()
     {
-        // $user = Auth::user();
         return [
             'title' => [
                 'required',
