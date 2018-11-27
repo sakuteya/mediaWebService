@@ -10,7 +10,6 @@ class ArticleController extends Controller
 {
     
     public function index($userName, $title){
-
         //対象記事がなければ404を返す。
         $userId = User::where('name', $userName)->firstOrFail()->id;
         $articel = Article::where('user_id', $userId)->where('title', $title)->firstOrFail();
@@ -18,7 +17,5 @@ class ArticleController extends Controller
         $vBody = $articel->body;
         return view('article', compact('vTitle', 'vBody'));
     }
-
-    
 
 }
