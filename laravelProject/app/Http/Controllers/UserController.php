@@ -12,7 +12,7 @@ class UserController extends Controller
         //対象ユーザがいなければ404を返す。
         $user = User::where('name', $userName)->firstOrFail();
         $vUserName = $user->name;
-        $vEmail = $user->email;
-        return view('user', compact('vUserName', 'vEmail'));
+        $vProfile = $user->profile;
+        return view('user', compact('vUserName', 'vProfile'));
     }
 }

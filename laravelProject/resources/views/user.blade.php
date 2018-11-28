@@ -8,7 +8,7 @@
                 <div class="card-header">{{$vUserName}}</div>
 
                 <div class="card-body">
-                    <p>{{$vEmail}}</p>
+                    <p>{{$vProfile}}</p>
                 </div>
             </div>
         </div>
