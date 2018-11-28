@@ -15,7 +15,7 @@ class AddColumnProfileUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->text('profile')->after('remember_token')->comment('プロフィール');
+            $table->text('profile')->after('remember_token')->comment('プロフィール')->nullable();
         });
     }
 

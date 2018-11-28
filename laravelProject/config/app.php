@@ -211,4 +211,8 @@ return [
 
     ],
 
+    //ModelFactoryで利用するFakerが英語の言語セットを使うのでこれを日本語のセットを使うように変更
+    //参考:https://qiita.com/fagai/items/7f63d651cbed3664b758
+    'faker_locale' => 'ja_JP',
+
 ];
