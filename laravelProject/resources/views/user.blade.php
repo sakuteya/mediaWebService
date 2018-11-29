@@ -13,7 +13,10 @@
                 <div class="card-body">
 
                     @forelse ($vArticels as $articel)
-                        <li>{{ $articel->title }}</li>
+                        <div>
+                            {{-- TODO 記事リンクをbladeでごちゃごちゃ作りたくない --}}
+                            <a href='{{ url("/article/{$vUserName}/{$articel->title}") }}'>{{ $articel->title }}</a>
+                        </div>
                     @empty
                         <p>記事なし</p>
                     @endforelse
