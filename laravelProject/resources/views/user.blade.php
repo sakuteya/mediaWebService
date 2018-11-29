@@ -14,7 +14,7 @@
 
                     @forelse ($vArticels as $articel)
                         <div>
-                            {{-- TODO 記事リンクをbladeでごちゃごちゃ作りたくない --}}
+                            {{-- TODO: 記事リンクをbladeでごちゃごちゃ作りたくない --}}
                             <a href='{{ url("/article/{$vUserName}/{$articel->title}") }}'>{{ $articel->title }}</a>
                         </div>
                     @empty
