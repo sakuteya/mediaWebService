@@ -10,6 +10,14 @@
                 <div class="card-body">
                     <p>{{$vProfile}}</p>
                 </div>
+                <div class="card-body">
+
+                    @forelse ($vArticels as $articel)
+                        <li>{{ $articel->title }}</li>
+                    @empty
+                        <p>記事なし</p>
+                    @endforelse
+                </div>
             </div>
         </div>
     </div>
