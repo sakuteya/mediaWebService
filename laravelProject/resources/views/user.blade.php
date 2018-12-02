@@ -23,7 +23,7 @@
                             </div>
                             <div class="d-flex">
                                 @foreach ($articel->tags as $tag)
-                                    <a href="#" class="badge badge-dark mr-1">{{$tag->tag}}</a>
+                                    <a href="#" class="badge badge-dark mr-1">{{$tag->tag_name}}</a>
                                 @endforeach
                             </div>
                         </div>

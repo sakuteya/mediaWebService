@@ -19,7 +19,7 @@ class ArticlesTableSeeder extends Seeder
         factory(App\Models\Article::class, 5)->create([
             'user_id' => $id,
         ])->each(function(App\Models\Article $article) {
-            $article->tags()->saveMany(factory(App\Models\Tag::class, rand(0, 3))->make());
+            $article->tags()->saveMany(factory(App\Models\Tag::class, rand(1, 5))->make());
         });
     }
 }
