@@ -28,5 +28,6 @@ Route::get('post/post', 'PostController@store');
 Route::get('phpinfo', 'PhpinfoController@index');
 
 Route::get('article/{userName}/{title}', 'ArticleController@index');
+Route::get('articles', 'ArticleController@listIndex');
 
 Route::get('{userName}', 'UserController@index');

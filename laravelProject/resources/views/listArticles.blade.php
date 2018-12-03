@@ -3,18 +3,10 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header">{{$vUserName}}</div>
-                <div class="card-body">
-                    <p>{{$vProfile}}</p>
-                </div>
-            </div>
-        </div>
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">記事一覧</div>
-                <div class="card-body">
+                <div class="paginate card-body">
                     <nav aria-label="検索結果ページ">
                         {{ $vArticels->links() }}
                     </nav>
@@ -22,7 +14,7 @@
                         <div class="border-bottom p-3">
                             <div>
                                 {{-- TODO: 記事リンクをbladeでごちゃごちゃ作りたくない --}}
-                                <a href='{{ url("/article/{$vUserName}/{$articel->title}") }}'>{{ $articel->title }}</a>
+                                <a href='{{ url("/article/{$articel->user->name}/{$articel->title}") }}'>{{ $articel->title }}</a>
                             </div>
                             <div class="d-flex">
                                 @foreach ($articel->tags as $tag)
