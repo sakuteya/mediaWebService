@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class ArticleController extends Controller
 {
 
-    public function index($userName, $title){
+    public function index(string $userName, string $title){
         //対象記事がなければ404を返す。
         $userId = User::where('name', $userName)->firstOrFail()->id;
         $articel = Article::where('user_id', $userId)->where('title', $title)->firstOrFail();
@@ -19,7 +19,9 @@ class ArticleController extends Controller
     }
 
     public function listIndex(){
-        $vArticels = Article::paginate(10);
+
+        $vArticels = Article::tagFilter(request('tag'))->paginate(10);
+
         return view('listArticles', compact('vArticels'));
     }
 
