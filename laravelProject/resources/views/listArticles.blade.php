@@ -19,13 +19,12 @@
                         <div class="border-bottom p-3">
                             <div class="d-flex small text-secondary">
                                 <span>投稿者:</span>
-                                <a href="#" class="mr-1">{{ $articel->user->name }}</a>
+                                <a href='{{ route("user" , ["userName" => $articel->user->name ]) }}' class="mr-1">{{ $articel->user->name }}</a>
                                 <span>更新日時:</span>
                                 <span>{{$articel->updated_at}}</span>
                             </div>
                             <div>
-                                {{-- TODO: 記事リンクをbladeでごちゃごちゃ作りたくない --}}
-                                <a href='{{ url("/article/{$articel->user->name}/{$articel->title}") }}' class="h3">{{ $articel->title }}</a>
+                                <a href='{{ route("article" , ["userName" => $articel->user->name , "title" => $articel->title ]) }}' class="h3">{{ $articel->title }}</a>
                             </div>
                             <div class="d-flex">
                                 @foreach ($articel->tags as $tag)
