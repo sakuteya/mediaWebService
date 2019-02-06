@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\User;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -20,7 +21,14 @@ class ArticleController extends Controller
 
     public function listIndex(){
 
-        $vArticels = Article::tagFilter(request('tag'))->paginate(10);
+        $vArticels;
+
+        if (is_null(request('tag'))) {
+            $vArticels = Article::paginate(10);
+        }else {
+            $tag = Tag::where('tag_name', request('tag'))->firstOrFail();
+            $vArticels = $tag->articles()->paginate(10);
+        }
 
         return view('listArticles', compact('vArticels'));
     }

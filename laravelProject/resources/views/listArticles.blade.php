@@ -7,6 +7,11 @@
             <div class="card">
                 <div class="card-header">記事一覧</div>
                 <div class="paginate card-body">
+                    {{-- <div class="search">
+                        {{ Form::open(['method' => 'GET']) }}
+                        {{ Form::input('検索する', 'q', null) }}
+                        {{ Form::close() }}
+                    </div> --}}
                     <nav aria-label="検索結果ページ">
                         {{ $vArticels->links() }}
                     </nav>
