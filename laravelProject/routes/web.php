@@ -36,6 +36,3 @@ Route::get('{userName}', 'UserController@index', function ($userName) {
     //
 })->name('user');
 
-// Route::get('user/{id}/profile', function ($id) {
-//     //
-// })->name('profile');
