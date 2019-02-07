@@ -16,16 +16,16 @@
                 <div class="card-header">記事一覧</div>
                 <div class="card-body">
                     <nav aria-label="検索結果ページ">
-                        {{ $vArticels->links() }}
+                        {{ $vArticles->links() }}
                     </nav>
-                    @forelse ($vArticels as $articel)
+                    @forelse ($vArticles as $article)
                         <div class="border-bottom p-3">
                             <div>
                                 {{-- TODO: 記事リンクをbladeでごちゃごちゃ作りたくない --}}
-                                <a href='{{ url("/article/{$vUserName}/{$articel->title}") }}'>{{ $articel->title }}</a>
+                                <a href='{{ url("/article/{$vUserName}/{$article->title}") }}'>{{ $article->title }}</a>
                             </div>
                             <div class="d-flex">
-                                @foreach ($articel->tags as $tag)
+                                @foreach ($article->tags as $tag)
                                     <a href="#" class="badge badge-dark mr-1">{{$tag->tag_name}}</a>
                                 @endforeach
                             </div>
