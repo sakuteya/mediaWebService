@@ -20,4 +20,14 @@ class Article extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function routeUser()
+    {
+        return route("user" , ["userName" => $this->user->name ]);
+    }
+
+    public function routeArticle()
+    {
+        return route("article" , ["userName" => $this->user->name , "title" => $this->title ]);
+    }
+
 }
