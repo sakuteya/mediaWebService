@@ -16,7 +16,7 @@ class ArticlesTableSeeder extends Seeder
 
         // 1:多でユーザと記事を作成
         $id = factory(App\User::class)->create()->id;
-        factory(App\Models\Article::class, 5)->create([
+        factory(App\Models\Article::class, 25)->create([
             'user_id' => $id,
         ])->each(function(App\Models\Article $article) {
             $article->tags()->saveMany(factory(App\Models\Tag::class, rand(1, 5))->make());

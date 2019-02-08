@@ -19,17 +19,7 @@
                         {{ $vArticles->links() }}
                     </nav>
                     @forelse ($vArticles as $article)
-                        <div class="border-bottom p-3">
-                            <div>
-                                {{-- TODO: 記事リンクをbladeでごちゃごちゃ作りたくない --}}
-                                <a href='{{ url("/article/{$vUserName}/{$article->title}") }}'>{{ $article->title }}</a>
-                            </div>
-                            <div class="d-flex">
-                                @foreach ($article->tags as $tag)
-                                    <a href="#" class="badge badge-dark mr-1">{{$tag->tag_name}}</a>
-                                @endforeach
-                            </div>
-                        </div>
+                        @include('articleBlock')
                     @empty
                         <p>記事なし</p>
                     @endforelse
