@@ -22,13 +22,10 @@ class ArticlesTableSeeder extends Seeder
             $article->tags()->saveMany(factory(App\Models\Tag::class, rand(1, 5))->make());
         });
 
-        //1:多でタグとユーザを作成
-        // $tagId = factory(App\Models\Tag::class)->create()->id;
-        // var_dump($tagId);
-
+        //1:多でタグと記事を作成
         factory(App\Models\Tag::class, 5)->create()
         ->each(function(App\Models\Tag $tag) {
-            $tag->articles()->saveMany(factory(App\Models\Article::class, rand(1, 5))->make());
+            $tag->articles()->saveMany(factory(App\Models\Article::class, rand(20, 50))->make());
         });
     }
 }

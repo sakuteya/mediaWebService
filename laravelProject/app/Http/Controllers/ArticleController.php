@@ -31,7 +31,6 @@ class ArticleController extends Controller
         }
 
         return view('listArticles', compact('vArticles'));
-        // return view('listArticles', compact('vArticles'))->with('tag' , request('tag'));
     }
 
 }
