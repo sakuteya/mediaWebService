@@ -13,25 +13,10 @@
                         {{ Form::close() }}
                     </div> --}}
                     <nav aria-label="検索結果ページ">
-                        {{ $vArticels->links() }}
+                        {{ $vArticles->links() }}
                     </nav>
-                    @forelse ($vArticels as $articel)
-                        <div class="border-bottom p-3">
-                            <div class="d-flex small text-secondary">
-                                <span>投稿者:</span>
-                                <a href='{{ $articel->routeUser() }}' class="mr-1">{{ $articel->user->name }}</a>
-                                <span>更新日時:</span>
-                                <span>{{$articel->updated_at}}</span>
-                            </div>
-                            <div>
-                                <a href='{{ $articel->routeArticle() }}' class="h3">{{ $articel->title }}</a>
-                            </div>
-                            <div class="d-flex">
-                                @foreach ($articel->tags as $tag)
-                                    <a href="#" class="badge badge-secondary mr-1">{{$tag->tag_name}}</a>
-                                @endforeach
-                            </div>
-                        </div>
+                    @forelse ($vArticles as $article)
+                        @include('articleBlock')
                     @empty
                         <p>記事なし</p>
                     @endforelse

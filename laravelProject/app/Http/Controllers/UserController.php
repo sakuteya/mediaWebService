@@ -16,7 +16,7 @@ class UserController extends Controller
         $vProfile = $user->profile;
 
         //ユーザの記事一覧
-        $vArticels = Article::where('user_id', [$user->id])->paginate(10);
-        return view('user', compact('vUserName', 'vProfile', 'vArticels'));
+        $vArticles = Article::where('user_id', [$user->id])->paginate(10);
+        return view('user', compact('vUserName', 'vProfile', 'vArticles'));
     }
 }

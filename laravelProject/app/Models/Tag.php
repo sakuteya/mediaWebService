@@ -13,8 +13,4 @@ class Tag extends Model
         return $this->belongsToMany(Article::class);
     }
 
-    // public function scopeTagArticles($query)
-    // {
-    //     return $query->belongsToMany(Article::class);
-    // }
 }
