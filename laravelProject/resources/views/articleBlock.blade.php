@@ -8,9 +8,13 @@
     <div>
         <a href='{{ $article->routeArticle() }}' class="h3">{{ $article->title }}</a>
     </div>
-    <div class="d-flex">
-        @foreach ($article->tags as $tag)
-            <a href="#" class="badge badge-secondary mr-1">{{$tag->tag_name}}</a>
-        @endforeach
-    </div>
+    <form action="articles" method='get'>
+        <div class="d-flex">
+            @foreach ($article->tags as $tag)
+                <button type="submit" class="badge badge-secondary mr-1" name="tag" value="{{$tag->tag_name}}">
+                    {{$tag->tag_name}}
+                </button>
+            @endforeach
+        </div>
+    </form>
 </div>

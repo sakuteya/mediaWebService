@@ -13,7 +13,7 @@
                         {{ Form::close() }}
                     </div> --}}
                     <nav aria-label="検索結果ページ">
-                        {{ $vArticles->links() }}
+                        {{ $vArticles->appends(Request::query())->links() }}
                     </nav>
                     @forelse ($vArticles as $article)
                         @include('articleBlock')
