@@ -14,9 +14,7 @@ class ArticleController extends Controller
         //対象記事がなければ404を返す。
         $userId = User::where('name', $userName)->firstOrFail()->id;
         $article = Article::where('user_id', $userId)->where('title', $title)->firstOrFail();
-        $vTitle = $article->title;
-        $vBody = $article->body;
-        return view('article', compact('vTitle', 'vBody'));
+        return view('article', compact('article'));
     }
 
     public function listIndex(){
