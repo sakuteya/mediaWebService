@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2d684562f1b308b835a4645d738370ec",
+    "content-hash": "c08e504c0edfd1ab9fdf742700fbe755",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1112,6 +1112,56 @@
                 "psr-3"
             ],
             "time": "2017-06-19T01:22:40+00:00"
+        },
+        {
+            "name": "mpyw/laravel-transaction-observer",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mpyw/laravel-transaction-observer.git",
+                "reference": "36fca3b17864fa048150f418326ed683aca275ce"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mpyw/laravel-transaction-observer/zipball/36fca3b17864fa048150f418326ed683aca275ce",
+                "reference": "36fca3b17864fa048150f418326ed683aca275ce",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^5.4",
+                "php": "^5.5 || ^7.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.5",
+                "php-coveralls/php-coveralls": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "mpyw\\LaravelTransactionObserver\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "mpyw",
+                    "email": "ryosuke_i_628@yahoo.co.jp"
+                }
+            ],
+            "description": "Observe delayed events and fire them after ALL transactions are done.",
+            "keywords": [
+                "commit",
+                "delay",
+                "dispatch",
+                "event",
+                "laravel",
+                "rollback",
+                "transaction"
+            ],
+            "time": "2017-10-09T06:32:23+00:00"
         },
         {
             "name": "nesbot/carbon",
