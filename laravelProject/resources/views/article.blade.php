@@ -10,6 +10,15 @@
                 <div class="card-body">
                     <p>{{$article->body}}</p>
                 </div>
+                <div class="card-body">
+                    <p>お気に入り数：{{$article->favorite_count}}</p>
+                </div>
+                {!! Form::open(['url' => 'fav']) !!}
+                    <button type="submit" class="badge badge-secondary mr-1" name="favorite" >
+                        Fav!!
+                    </button>
+                <input type="hidden" name="article_id" value="{{$article->id}}">
+                {!! Form::close() !!}
             </div>
         </div>
     </div>

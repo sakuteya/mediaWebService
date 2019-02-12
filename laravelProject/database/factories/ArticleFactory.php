@@ -9,5 +9,6 @@ $factory->define(App\Models\Article::class, function (Faker $faker) {
         },
         'title' => $faker->sentence,
         'body' => $faker->realText,
+        'favorite_count' => 0,
     ];
 });

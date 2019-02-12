@@ -150,6 +150,7 @@ return [
         /*
          * Package Service Providers...
          */
+        mpyw\LaravelTransactionObserver\Provider::class,
 
         /*
          * Application Service Providers...

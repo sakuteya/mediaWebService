@@ -36,3 +36,4 @@ Route::get('{userName}', 'UserController@index', function ($userName) {
     //
 })->name('user');
 
+Route::post('/fav', 'ArticleController@addFavorite');

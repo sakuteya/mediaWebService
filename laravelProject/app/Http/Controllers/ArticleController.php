@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Models\User;
 use App\Models\Tag;
+use App\Models\Favorite;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -29,6 +30,16 @@ class ArticleController extends Controller
         }
 
         return view('listArticles', compact('vArticles'));
+    }
+
+    public function addFavorite(Request $request)
+    {
+        $favorite = new Favorite;
+        $favorite->article_id = $request->article_id;
+        $favorite->user_id = $request->user()->id;
+        $favorite->save();
+
+        return view('fav');
     }
 
 }
