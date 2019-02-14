@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\Article;
 use App\Models\User;
 use App\Models\Tag;
@@ -36,10 +37,19 @@ class ArticleController extends Controller
     {
         $favorite = new Favorite;
         $favorite->article_id = $request->article_id;
-        $favorite->user_id = $request->user()->id;
+        $favorite->user_id = Auth::id();
         $favorite->save();
 
-        return view('fav');
+        $article = Article::findOrFail($request->article_id);
+        return view('article', compact('article'));
+    }
+
+    public function deleteFavorite(Request $request)
+    {
+        Favorite::where('article_id', $request->article_id)->where('user_id', Auth::id())->delete();
+
+        $article = Article::findOrFail($request->article_id);
+        return view('article', compact('article'));
     }
 
 }
