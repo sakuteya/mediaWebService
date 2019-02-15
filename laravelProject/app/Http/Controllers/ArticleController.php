@@ -40,16 +40,14 @@ class ArticleController extends Controller
         $favorite->user_id = Auth::id();
         $favorite->save();
 
-        $article = Article::findOrFail($request->article_id);
-        return view('article', compact('article'));
+        return back();
     }
 
     public function deleteFavorite(Request $request)
     {
         Favorite::where('article_id', $request->article_id)->where('user_id', Auth::id())->delete();
 
-        $article = Article::findOrFail($request->article_id);
-        return view('article', compact('article'));
+        return back();
     }
 
 }
