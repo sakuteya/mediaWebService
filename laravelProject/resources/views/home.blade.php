@@ -16,6 +16,12 @@
 
                     You are logged in!
                 </div>
+                <div id="app">
+                    <otameshi-component></otameshi-component>
+                </div>
+                <div id="app">
+                    <example-component></example-component>
+                </div>
             </div>
         </div>
     </div>

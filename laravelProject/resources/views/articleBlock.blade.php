@@ -8,7 +8,7 @@
     <div>
         <a href='{{ $article->routeArticle() }}' class="h3">{{ $article->title }}</a>
     </div>
-    <form action="articles" method='get'>
+    {!! Form::open(['method' => 'get' , 'url' => 'articles']) !!}
         <div class="d-flex">
             @foreach ($article->tags as $tag)
                 <button type="submit" class="badge badge-secondary mr-1" name="tag" value="{{$tag->tag_name}}">
@@ -16,5 +16,5 @@
                 </button>
             @endforeach
         </div>
-    </form>
+    {!! Form::close() !!}
 </div>

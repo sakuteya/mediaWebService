@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Tag;
+use App\Models\Favorite;
 
 class Article extends Model
 {
@@ -30,4 +32,13 @@ class Article extends Model
         return route("article" , ["userName" => $this->user->name , "title" => $this->title ]);
     }
 
+    public function isFavorite()
+    {
+        return Favorite::where('article_id', $this->id)->where('user_id', Auth::id())->exists();
+    }
+
+    public function countFavorite()
+    {
+        return Favorite::where('article_id', $this->id)->count();
+    }
 }
