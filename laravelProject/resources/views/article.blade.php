@@ -30,6 +30,33 @@
                 @endif
             </div>
         </div>
+
+        @foreach ($article->comments as $comment)
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header"></div>
+                    <div class="card-body">
+                        <p>{{$comment->comment}}</p>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header"></div>
+                <div class="card-body">
+
+                {!! Form::open(['url' => 'comment']) !!}
+                    <textarea type="text" name="comment"></textarea>
+                    <button type="submit" class="btn btn-primary" name="comment_btn" >
+                        コメントする
+                    </button>
+                    <input type="hidden" name="article_id" value="{{$article->id}}">
+                {!! Form::close() !!}
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection

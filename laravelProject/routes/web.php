@@ -38,3 +38,4 @@ Route::get('{userName}', 'UserController@index', function ($userName) {
 
 Route::post('/fav', 'ArticleController@addFavorite');
 Route::post('/delFav', 'ArticleController@deleteFavorite');
+Route::post('/comment', 'ArticleController@addComment');
