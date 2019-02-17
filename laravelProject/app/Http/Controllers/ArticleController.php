@@ -7,6 +7,7 @@ use App\Models\Article;
 use App\Models\User;
 use App\Models\Tag;
 use App\Models\Favorite;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -46,6 +47,17 @@ class ArticleController extends Controller
     public function deleteFavorite(Request $request)
     {
         Favorite::where('article_id', $request->article_id)->where('user_id', Auth::id())->delete();
+
+        return back();
+    }
+
+    public function addComment(Request $request)
+    {
+        $comment = new Comment;
+        $comment->comment = $request->comment;
+        $comment->article_id = $request->article_id;
+        $comment->user_id = Auth::id();
+        $comment->save();
 
         return back();
     }
