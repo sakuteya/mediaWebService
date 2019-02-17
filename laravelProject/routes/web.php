@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('topPage');
 });
 
 Route::get('testSak', 'testSakController@index');
@@ -30,7 +30,7 @@ Route::get('phpinfo', 'PhpinfoController@index');
 Route::get('article/{userName}/{title}', 'ArticleController@index', function ($userName, $title) {
     //
 })->name('article');
-Route::get('articles', 'ArticleController@listIndex');
+Route::get('articles', 'ArticleController@listIndex')->name('articles');
 
 Route::get('{userName}', 'UserController@index', function ($userName) {
     //
