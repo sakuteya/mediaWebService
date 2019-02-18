@@ -2,17 +2,9 @@
 
 @section('title', 'Page Title')
 
-@section('sidebar')
-    @@parent
-
-    <p>ここはメインのサイドバーに追加される</p>
-@endsection
-
 @section('content')
-    <p>ここが本文のコンテンツ</p>
 
-    <h1>ポスト作成</h1>
-
+    {{-- TODO:なんだこれ --}}
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -24,16 +16,35 @@
     @endif
 
     <!-- ポスト作成フォーム -->
-    
+
     <form action='post' method='store'>
         {{ csrf_field() }}
 
-        <button type='submit' name='tsts'>
-            とうこうぼたん
-        </button>
-        <input type='text' name='title'>
-        <input type='text' name='body'>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
 
+                <!-- input type="text" string -->
+                <div class="form-group @if(!empty($errors->first('title'))) has-error @endif">
+                    <label>タイトル</label>
+                    <input type="text" name="title" value="{{old('title')}}" class="form-control">
+                    <span class="help-block">{{$errors->first('title')}}</span>
+                </div>
+
+
+                <!-- textarea -->
+                <div class="form-group @if(!empty($errors->first('body'))) has-error @endif">
+                    <label>本文</label>
+                    <textarea name="body" class="form-control" rows="10">{{old('body')}}</textarea>
+                    <span class="help-block">{{$errors->first('body')}}</span>
+                </div>
+
+                <div class="text-right">
+                    <button type='submit' class="btn btn-primary">
+                        投稿する
+                    </button>
+                </div>
+            </div>
+        </div>
     </form>
 
 @endsection
