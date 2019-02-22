@@ -15,6 +15,7 @@
             <div class="card">
                 <div class="card-header">どどん</div>
                 <div class="card-body">
+                    <a href="{{route('create')}}">記事作成</a>
                 </div>
             </div>
         </div>

@@ -17,8 +17,9 @@
 
     <!-- ポスト作成フォーム -->
 
-    <form action='post' method='store'>
-        {{ csrf_field() }}
+    {{-- <form action='post' method='store'> --}}
+    {!! Form::open(['url' => 'post']) !!}
+        {{-- {{ csrf_field() }} --}}
 
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -45,6 +46,7 @@
                 </div>
             </div>
         </div>
-    </form>
+    {{-- </form> --}}
+    {!! Form::close() !!}
 
 @endsection
