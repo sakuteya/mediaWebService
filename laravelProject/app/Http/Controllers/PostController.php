@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
@@ -29,7 +30,8 @@ class PostController extends Controller
         $post = new Post;
         $post->title = $request->title;
         $post->body = $request->body;
-        $post->user_id = $request->user()->id;
+        $post->user_id = Auth::id();
+        $post->favorite_count = 0;
         $post->save();
 
         return view('post');
