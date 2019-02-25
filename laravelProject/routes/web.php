@@ -11,30 +11,31 @@
 |
 */
 
+Auth::routes();
+Route::get('phpinfo', 'PhpinfoController@index');
 Route::get('/', function () {
     return view('topPage');
 });
+Route::get('/home', 'HomeController@index')
+->name('home');
 
-Route::get('testSak', 'testSakController@index');
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('post/create', 'PostController@create')->name('create');
-
-Route::post('post', 'PostController@store');
-
-Route::get('phpinfo', 'PhpinfoController@index');
-
+Route::get('articles', 'ArticleController@listIndex')
+->name('articles');
 Route::get('article/{userName}/{title}', 'ArticleController@index', function ($userName, $title) {
-    //
 })->name('article');
-Route::get('articles', 'ArticleController@listIndex')->name('articles');
-
 Route::get('{userName}', 'UserController@index', function ($userName) {
-    //
 })->name('user');
 
-Route::post('/fav', 'ArticleController@addFavorite');
-Route::post('/delFav', 'ArticleController@deleteFavorite');
-Route::post('/comment', 'ArticleController@addComment');
+
+// ログイン必須ページ
+Route::middleware('auth')->group(function () {
+
+    Route::get('post/create', 'PostController@create' , function() {
+    })->name('create');
+    Route::post('post', 'PostController@store');
+    Route::post('/fav', 'ArticleController@addFavorite');
+    Route::post('/delFav', 'ArticleController@deleteFavorite');
+    Route::post('/comment', 'ArticleController@addComment');
+
+});
+
