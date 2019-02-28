@@ -38,21 +38,28 @@ class ArticleController extends Controller
      */
     public function store(ArticleRequest $request)
     {
-        //TODO:post>>articleへなおす
-        $post = new Article;
-        $post->title = $request->title;
-        $post->body = $request->body;
-        $post->user_id = Auth::id();
-        $post->favorite_count = 0;
-        $post->save();
+        $article = new Article;
+        $article->title = $request->title;
+        $article->body = $request->body;
+        $article->user_id = Auth::id();
+        $article->favorite_count = 0;
+        $article->save();
 
-        $article = Article::find($post->id);
         $article->tags()->createMany([
             [
                 'tag_name' => $request->tag0,
             ],
             [
                 'tag_name' => $request->tag1,
+            ],
+            [
+                'tag_name' => $request->tag2,
+            ],
+            [
+                'tag_name' => $request->tag3,
+            ],
+            [
+                'tag_name' => $request->tag4,
             ],
         ]);
 
