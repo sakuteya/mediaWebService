@@ -9,6 +9,8 @@ use App\Models\Tag;
 use App\Models\Favorite;
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use App\Http\Requests\ArticleRequest;
+
 
 class ArticleController extends Controller
 {
@@ -18,6 +20,43 @@ class ArticleController extends Controller
         $userId = User::where('name', $userName)->firstOrFail()->id;
         $article = Article::where('user_id', $userId)->where('title', $title)->firstOrFail();
         return view('article', compact('article'));
+    }
+
+    /**
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        return view('post.create');
+    }
+
+    /**
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function store(ArticleRequest $request)
+    {
+        //TODO:post>>articleへなおす
+        $post = new Article;
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->user_id = Auth::id();
+        $post->favorite_count = 0;
+        $post->save();
+
+        $article = Article::find($post->id);
+        $article->tags()->createMany([
+            [
+                'tag_name' => $request->tag0,
+            ],
+            [
+                'tag_name' => $request->tag1,
+            ],
+        ]);
+
+        return view('post');
     }
 
     public function listIndex(){
