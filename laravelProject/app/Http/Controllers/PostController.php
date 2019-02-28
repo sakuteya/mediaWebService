@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
+use App\Models\Article;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 
@@ -33,6 +34,19 @@ class PostController extends Controller
         $post->user_id = Auth::id();
         $post->favorite_count = 0;
         $post->save();
+
+        $article = Article::find($post->id);
+        $article->tags()->createMany([
+            [
+                'tag_name' => $request->tag0,
+            ],
+            [
+                'tag_name' => $request->tag1,
+            ],
+        ]);
+
+
+
 
         return view('post');
     }
