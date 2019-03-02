@@ -8,7 +8,7 @@
                 {{-- <div class="card-header">{{$article->title}}</div> --}}
                 @include('articleBlock')
                 <div class="card-body">
-                    <p>{{$article->body}}</p>
+                    <pre>{{$article->body}}</pre>
                 </div>
                 <div class="card-body">
                     <p>お気に入り数：{{$article->countFavorite()}}</p>

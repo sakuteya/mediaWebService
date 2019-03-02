@@ -13,5 +13,10 @@ class UsersTableSeeder extends Seeder
     {
         //ModelsのUserとどっちがいいか？
         factory(App\User::class, 10)->create();
+        //testユーザ
+        factory(App\User::class)->create([
+            'name' => 'てすとくん',
+            'email' => 'test001@example.com',
+        ]);
     }
 }

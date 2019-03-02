@@ -30,9 +30,9 @@ Route::get('{userName}', 'UserController@index', function ($userName) {
 // ログイン必須ページ
 Route::middleware('auth')->group(function () {
 
-    Route::get('post/create', 'PostController@create' , function() {
+    Route::get('post/create', 'ArticleController@create' , function() {
     })->name('create');
-    Route::post('post', 'PostController@store');
+    Route::post('post', 'ArticleController@store');
     Route::post('/fav', 'ArticleController@addFavorite');
     Route::post('/delFav', 'ArticleController@deleteFavorite');
     Route::post('/comment', 'ArticleController@addComment');

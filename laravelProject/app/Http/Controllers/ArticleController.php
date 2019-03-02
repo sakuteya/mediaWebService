@@ -9,6 +9,8 @@ use App\Models\Tag;
 use App\Models\Favorite;
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use App\Http\Requests\ArticleRequest;
+
 
 class ArticleController extends Controller
 {
@@ -18,6 +20,62 @@ class ArticleController extends Controller
         $userId = User::where('name', $userName)->firstOrFail()->id;
         $article = Article::where('user_id', $userId)->where('title', $title)->firstOrFail();
         return view('article', compact('article'));
+    }
+
+    /**
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        return view('post.create');
+    }
+
+    /**
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function store(ArticleRequest $request)
+    {
+        $article = new Article;
+        $article->title = $request->title;
+        $article->body = $request->body;
+        $article->user_id = Auth::id();
+        $article->favorite_count = 0;
+        $article->save();
+
+        $this->createTags($request, $article);
+
+        return view('post', compact('article'));
+    }
+
+    private function createTags(ArticleRequest $request, Article $article){
+        if ($request->filled('tag0')) {
+            $article->tags()->create([
+                'tag_name' => $request->tag0,
+            ]);
+        }
+        if ($request->filled('tag1')) {
+            $article->tags()->create([
+                'tag_name' => $request->tag1,
+            ]);
+        }
+        if ($request->filled('tag2')) {
+            $article->tags()->create([
+                'tag_name' => $request->tag2,
+            ]);
+        }
+        if ($request->filled('tag3')) {
+            $article->tags()->create([
+                'tag_name' => $request->tag3,
+            ]);
+        }
+        if ($request->filled('tag4')) {
+            $article->tags()->create([
+                'tag_name' => $request->tag4,
+            ]);
+        }
     }
 
     public function listIndex(){
