@@ -45,25 +45,37 @@ class ArticleController extends Controller
         $article->favorite_count = 0;
         $article->save();
 
-        $article->tags()->createMany([
-            [
-                'tag_name' => $request->tag0,
-            ],
-            [
-                'tag_name' => $request->tag1,
-            ],
-            [
-                'tag_name' => $request->tag2,
-            ],
-            [
-                'tag_name' => $request->tag3,
-            ],
-            [
-                'tag_name' => $request->tag4,
-            ],
-        ]);
+        $this->createTags($request, $article);
 
-        return view('post');
+        return view('post', compact('article'));
+    }
+
+    private function createTags(ArticleRequest $request, Article $article){
+        if ($request->filled('tag0')) {
+            $article->tags()->create([
+                'tag_name' => $request->tag0,
+            ]);
+        }
+        if ($request->filled('tag1')) {
+            $article->tags()->create([
+                'tag_name' => $request->tag1,
+            ]);
+        }
+        if ($request->filled('tag2')) {
+            $article->tags()->create([
+                'tag_name' => $request->tag2,
+            ]);
+        }
+        if ($request->filled('tag3')) {
+            $article->tags()->create([
+                'tag_name' => $request->tag3,
+            ]);
+        }
+        if ($request->filled('tag4')) {
+            $article->tags()->create([
+                'tag_name' => $request->tag4,
+            ]);
+        }
     }
 
     public function listIndex(){
