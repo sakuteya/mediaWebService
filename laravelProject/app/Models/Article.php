@@ -13,6 +13,8 @@ class Article extends Model
     protected $table = 'articles';
     public $timestamps = true;
 
+    protected $fillable = ['title', 'body'];
+
     public function tags()
     {
         return $this->belongsToMany(Tag::class, 'article_tag');
@@ -36,6 +38,11 @@ class Article extends Model
     public function routeArticle()
     {
         return route("article" , ["userName" => $this->user->name , "title" => $this->title ]);
+    }
+
+    public function routeEdit()
+    {
+        return route("edit.article" , ["userName" => $this->user->name , "title" => $this->title ]);
     }
 
     public function isFavorite()

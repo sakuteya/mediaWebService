@@ -23,6 +23,10 @@ Route::get('articles', 'ArticleController@listIndex')
 ->name('articles');
 Route::get('article/{userName}/{title}', 'ArticleController@index', function ($userName, $title) {
 })->name('article');
+Route::get('article/{userName}/{title}/edit', 'ArticleController@edit', function ($userName, $title) {
+})->name('edit.article');
+Route::patch('article/{userName}/{title}', 'ArticleController@update', function ($userName, $title) {
+})->name('update.article');
 Route::get('{userName}', 'UserController@index', function ($userName) {
 })->name('user');
 

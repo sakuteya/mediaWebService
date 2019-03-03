@@ -78,6 +78,23 @@ class ArticleController extends Controller
         }
     }
 
+    public function edit(string $userName, string $title) {
+        $userId = User::where('name', $userName)->firstOrFail()->id;
+        $article = Article::where('user_id', $userId)->where('title', $title)->firstOrFail();
+
+        return view('post.edit', compact('article'));
+    }
+
+    public function update(ArticleRequest $request) {
+
+        $article = Article::findOrFail($request->article_id);
+        $article->update($request->validated());
+
+        // return redirect(url('articles', [$article->id]));
+        // return redirect($article->routeArticle);
+        return back();
+    }
+
     public function listIndex(){
 
         $vArticles;

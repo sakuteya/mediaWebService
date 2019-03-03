@@ -28,7 +28,7 @@ class ArticleRequest extends FormRequest
         return [
             'title' => [
                 'required',
-                Rule::unique('articles')->ignore($this->input('id'))->where(function($query) {
+                Rule::unique('articles')->ignore($this->article_id)->where(function($query) {
                     $query->where('user_id', $this->user()->id);
                 }),
                 'max:255'
