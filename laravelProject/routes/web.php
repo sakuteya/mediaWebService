@@ -16,8 +16,12 @@ Route::get('phpinfo', 'PhpinfoController@index');
 Route::get('/', function () {
     return view('topPage');
 });
-Route::get('/home', 'HomeController@index')
-->name('home');
+//FIXME:ログイン後の画面を考える
+Route::get('/home', function () {
+    return view('topPage');
+})->name('home');
+// Route::get('/home', 'HomeController@index')
+// ->name('home');
 
 Route::get('articles', 'ArticleController@listIndex')
 ->name('articles');

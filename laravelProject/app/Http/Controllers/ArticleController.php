@@ -50,32 +50,28 @@ class ArticleController extends Controller
         return view('post', compact('article'));
     }
 
-    private function createTags(ArticleRequest $request, Article $article){
+    private function createTags(ArticleRequest $request, Article $article)
+    {
+        $idTags;
+
         if ($request->filled('tag0')) {
-            $article->tags()->create([
-                'tag_name' => $request->tag0,
-            ]);
+            $idTags[] = Tag::firstOrCreate(['tag_name' => $request->tag0])->id;
         }
         if ($request->filled('tag1')) {
-            $article->tags()->create([
-                'tag_name' => $request->tag1,
-            ]);
+            $idTags[] = Tag::firstOrCreate(['tag_name' => $request->tag1])->id;
         }
         if ($request->filled('tag2')) {
-            $article->tags()->create([
-                'tag_name' => $request->tag2,
-            ]);
+            $idTags[] = Tag::firstOrCreate(['tag_name' => $request->tag2])->id;
         }
         if ($request->filled('tag3')) {
-            $article->tags()->create([
-                'tag_name' => $request->tag3,
-            ]);
+            $idTags[] = Tag::firstOrCreate(['tag_name' => $request->tag3])->id;
         }
         if ($request->filled('tag4')) {
-            $article->tags()->create([
-                'tag_name' => $request->tag4,
-            ]);
+            $idTags[] = Tag::firstOrCreate(['tag_name' => $request->tag4])->id;
         }
+
+        $article->tags()->sync($idTags);
+
     }
 
     public function edit(string $userName, string $title) {
@@ -90,9 +86,9 @@ class ArticleController extends Controller
         $article = Article::findOrFail($request->article_id);
         $article->update($request->validated());
 
-        // return redirect(url('articles', [$article->id]));
-        // return redirect($article->routeArticle);
-        return back();
+        $this->createTags($request, $article);
+
+        return redirect()->route('article', ["userName" => $article->user->name , "title" => $article->title ]);
     }
 
     public function listIndex(){

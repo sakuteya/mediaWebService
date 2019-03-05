@@ -31,16 +31,16 @@
                 </div>
 
                 <div class="row">
-                    @for ($i = 0; $i < 5; $i++)
+                    @foreach ($article->tags as $tag)
                         <div class="col-md-2">
                             <!-- input type="text" string -->
-                            <div class="form-group @if(!empty($errors->first('tag'.$i))) has-error @endif">
-                                <label>タグ{{ $i }}</label>
-                                <input type="text" name="tag{{ $i }}" value="{{old('tag'.$i)}}" class="form-control">
-                                <span class="help-block">{{$errors->first('tag'.$i)}}</span>
+                            <div class="form-group @if(!empty($errors->first('tag'.$loop->index))) has-error @endif">
+                                <label>タグ{{ $loop->index }}</label>
+                                <input type="text" name="tag{{ $loop->index }}" value="{{$tag->tag_name}}" class="form-control">
+                                <span class="help-block">{{$errors->first('tag'.$loop->index)}}</span>
                             </div>
                         </div>
-                    @endfor
+                    @endforeach
                 </div>
 
                 <!-- textarea -->
