@@ -75,20 +75,21 @@ class ArticleController extends Controller
 
     }
 
-    public function edit(string $userName, string $title) {
+    public function edit(string $userName, string $title)
+    {
         $userId = User::where('name', $userName)->firstOrFail()->id;
         $article = Article::where('user_id', $userId)->where('title', $title)->firstOrFail();
-
-        $this->authorize('edit', $article);
+        $this->authorize('update', $article);
 
         return view('post.edit', compact('article'));
     }
 
-    public function update(ArticleRequest $request) {
-
+    public function update(ArticleRequest $request)
+    {
         $article = Article::findOrFail($request->article_id);
-        $article->update($request->validated());
+        $this->authorize('update', $article);
 
+        $article->update($request->validated());
         $this->createTags($request, $article);
 
         return redirect()->route('article', ["userName" => $article->user->name , "title" => $article->title ]);
