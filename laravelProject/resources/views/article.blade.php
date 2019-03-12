@@ -28,9 +28,11 @@
                         <input type="hidden" name="article_id" value="{{$article->id}}">
                     {!! Form::close() !!}
                 @endif
-                <div>
-                    <a href='{{ $article->routeEdit() }}' class="btn btn-primary">編集する</a>
-                </div>
+                @can('edit', $article)
+                    <div>
+                        <a href='{{ $article->routeEdit() }}' class="btn btn-primary">編集する</a>
+                    </div>
+                @endcan
             </div>
         </div>
     </div>

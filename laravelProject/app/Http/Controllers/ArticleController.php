@@ -10,6 +10,7 @@ use App\Models\Favorite;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Http\Requests\ArticleRequest;
+use App\Http\Controllers\Controller;
 
 
 class ArticleController extends Controller
@@ -52,7 +53,7 @@ class ArticleController extends Controller
 
     private function createTags(ArticleRequest $request, Article $article)
     {
-        $idTags;
+        $idTags = array();
 
         if ($request->filled('tag0')) {
             $idTags[] = Tag::firstOrCreate(['tag_name' => $request->tag0])->id;
@@ -77,6 +78,8 @@ class ArticleController extends Controller
     public function edit(string $userName, string $title) {
         $userId = User::where('name', $userName)->firstOrFail()->id;
         $article = Article::where('user_id', $userId)->where('title', $title)->firstOrFail();
+
+        $this->authorize('edit', $article);
 
         return view('post.edit', compact('article'));
     }
