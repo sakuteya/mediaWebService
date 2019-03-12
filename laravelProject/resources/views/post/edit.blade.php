@@ -41,6 +41,7 @@
                             </div>
                         </div>
                     @endforeach
+                    @include('post.inputTags', ['startValue' => count($article->tags)])
                 </div>
 
                 <!-- textarea -->
