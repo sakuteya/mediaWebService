@@ -45,6 +45,11 @@ class Article extends Model
         return route("edit.article" , ["userName" => $this->user->name , "title" => $this->title ]);
     }
 
+    public function routeDelete()
+    {
+        return route("delete.article" , ["userName" => $this->user->name , "title" => $this->title ]);
+    }
+
     public function isFavorite()
     {
         return Favorite::where('article_id', $this->id)->where('user_id', Auth::id())->exists();

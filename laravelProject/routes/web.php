@@ -31,6 +31,8 @@ Route::get('article/{userName}/{title}/edit', 'ArticleController@edit', function
 })->name('edit.article');
 Route::patch('article/{userName}/{title}', 'ArticleController@update', function ($userName, $title) {
 })->name('update.article');
+Route::get('article/{userName}/{title}/delete', 'ArticleController@delete', function ($userName, $title) {
+})->name('delete.article');
 Route::get('{userName}', 'UserController@index', function ($userName) {
 })->name('user');
 
