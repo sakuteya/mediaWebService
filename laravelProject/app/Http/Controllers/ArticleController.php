@@ -95,6 +95,17 @@ class ArticleController extends Controller
         return redirect()->route('article', ["userName" => $article->user->name , "title" => $article->title ]);
     }
 
+    public function delete(string $userName, string $title)
+    {
+        $userId = User::where('name', $userName)->firstOrFail()->id;
+        $article = Article::where('user_id', $userId)->where('title', $title)->firstOrFail();
+        $this->authorize('update', $article);
+
+        $article->delete();
+
+        return view('post.delete');
+    }
+
     public function listIndex(){
 
         $vArticles;

@@ -45,9 +45,33 @@
                             <div>
                                 <a href='{{ $article->routeEdit() }}' class="btn btn-outline-success m-1">編集</a>
                             </div>
+                            <!-- 削除モーダル呼び出し -->
+                            <button type="button" class="btn btn-outline-danger m-1" data-toggle="modal" data-target="#deleteModal">
+                                削除
+                            </button>
                         @endcan
                     </div><!-- /.navbar-collapse -->
                 </nav>
+                <!-- 削除モーダルの設定 -->
+                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">記事の削除</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>記事、コメントは完全に削除されます。よろしいですか？</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                                <a href='{{ $article->routeDelete() }}' class="btn btn-outline-danger">削除</a>
+                            </div><!-- /.modal-footer -->
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
 
             </div>
         </div>
