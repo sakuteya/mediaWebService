@@ -9,7 +9,7 @@
                 @include('articleBlock')
 
                 <div class="card-body">
-                    <pre>{{$article->body}}</pre>
+                    {!! nl2br(e($article->body)) !!}
                 </div>
 
                 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">

@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">{{$vUserName}}</div>
                 <div class="card-body">
-                    <p>{{$vProfile}}</p>
+                    {!! nl2br(e($vProfile)) !!}
                 </div>
             </div>
         </div>
