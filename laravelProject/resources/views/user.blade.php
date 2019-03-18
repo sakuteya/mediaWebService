@@ -7,12 +7,14 @@
             <div class="card">
                 <div class="card-header">{{$user->name}}</div>
                 <div class="card-body">
-                    <div class="border-bottom p-3">
+                    <div class="border-bottom pb-3 mb-3">
                         {!! nl2br(e($user->profile)) !!}
                     </div>
-                    <div>
-                        <a href='{{ $user->routeEdit() }}' class="btn btn-outline-success m-1">編集</a>
-                    </div>
+                    @can('update', $user)
+                        <div class="text-right">
+                            <a href='{{ $user->routeEdit() }}' class="btn btn-outline-success m-1">編集</a>
+                        </div>
+                    @endcan
                 </div>
             </div>
         </div>

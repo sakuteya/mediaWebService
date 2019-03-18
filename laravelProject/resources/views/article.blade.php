@@ -95,6 +95,7 @@
 
     {!! Form::open(['url' => 'comment']) !!}
     <div class="row justify-content-center">
+        {{-- FIXME:あんまりID書きたくない --}}
         <input type="hidden" name="article_id" value="{{$article->id}}">
         <div class="col-md-8">
             <div class="card border-primary">

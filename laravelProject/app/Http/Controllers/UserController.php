@@ -23,8 +23,7 @@ class UserController extends Controller
     public function edit(string $userName)
     {
         $user = User::where('name', $userName)->firstOrFail();
-        // $article = Article::where('user_id', $userId)->where('title', $title)->firstOrFail();
-        // $this->authorize('update', $article);
+        $this->authorize('update', $user);
 
         return view('userPage.edit', compact('user'));
     }
@@ -32,7 +31,6 @@ class UserController extends Controller
     public function update(UserRequest $request)
     {
         $user = User::findOrFail(Auth::id());
-        // $this->authorize('update', $article);
 
         $user->update($request->validated());
 
