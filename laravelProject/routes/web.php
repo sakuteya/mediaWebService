@@ -33,8 +33,13 @@ Route::patch('article/{userName}/{title}', 'ArticleController@update', function 
 })->name('update.article');
 Route::get('article/{userName}/{title}/delete', 'ArticleController@delete', function ($userName, $title) {
 })->name('delete.article');
+
 Route::get('{userName}', 'UserController@index', function ($userName) {
 })->name('user');
+Route::get('{userName}/edit', 'UserController@edit', function ($userName) {
+})->name('edit.user');
+Route::patch('{userName}', 'UserController@update', function ($userName) {
+})->name('update.user');
 
 
 // ログイン必須ページ
